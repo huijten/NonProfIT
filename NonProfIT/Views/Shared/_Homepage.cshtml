@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NonProfIT</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/lottie.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NonProfIT.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="animation">
+        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ysbhqsuf.json" background="transparent" speed="1" style="" loop autoplay></lottie-player>
+    </div>
+    <div class="title">
+        <h1 class="text-primary display-1">NonProfIT</h1>
+        <p class="text-muted">Wij verbinden studenten en bedrijven met elkaar.</p>
+        <div class="row">
+            <a class="btn btn-primary col m-2" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="btn btn-outline-primary col m-2" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </div>
+
+    </div>
+    @RenderBody()
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-player/1.4.3/lottie-player.js" integrity="sha512-gloNJjJNXOqLPOVxOJ/Sg9VN4jSPZpDdEQC+CDP0TczZ6OaOk0Ru1daFEOT/XAJY7fYABwFWVRXOx4HMFr6+lA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
