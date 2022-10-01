@@ -144,7 +144,7 @@ namespace NonProfIT.Areas.Identity.Pages.Account
                     if (claims.Where(r => r.Value == "Employee").Any())
                     {
                         _logger.LogInformation("Employee logged in.");
-                        return LocalRedirect("~/");
+                        return LocalRedirect("~/EmployeeDashboard");
                     }
 
                 }
