@@ -46,5 +46,6 @@ void AddAuthorizationPolicies(IServiceCollection services)
     services.AddAuthorization(options =>
     {
         options.AddPolicy("StudentOnly", policy => policy.RequireClaim("Student"));
+        options.AddPolicy("EmployeeOnly", policy => policy.RequireClaim("Employee"));
     });
 }
