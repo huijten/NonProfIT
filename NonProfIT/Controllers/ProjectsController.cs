@@ -78,7 +78,7 @@ namespace NonProfIT.Controllers
         [HttpPost]
         [Authorize(Roles = "Employee")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProjectId,Name,Description,Compensation")] Project project)
+        public async Task<IActionResult> Create([Bind("Name,Description,Compensation")] Project project)
         {
             project.Student = null;
             project.Available = true;
@@ -87,12 +87,10 @@ namespace NonProfIT.Controllers
             project.Creator = creator;
 
             // This method always returns false, dont know why
-            if (ModelState.IsValid)
-            {
-                _context.Add(project);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+
+            _context.Add(project);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
 
             return View(project);
         }

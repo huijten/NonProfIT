@@ -20,11 +20,11 @@
                 }
                 <h5 class="card-title fw-bold">@item.Name</h5>
                 <h6 class="card-subtitle mb-2 text-muted">$@item.Compensation</h6>
-                <p class="card-text">@item.Description.Substring(0,90)... <a href="" class="card-link">Lees meer</a></p>
+                <p class="card-text">Klik op meer info voor de omschrijving.</p>
                 @if (item.Available)
                 {
                     <form asp-action="SignUp">
-                        <input type="hidden" asp-for="@item.ProjectId"/>
+                        <input type="hidden" name="@item.ProjectId"/>
                         <input type="submit" value="Aanmelden" class="btn btn-sm btn-dark" />
                         <a href="#" class="btn btn-sm btn-outline-dark">Meer info</a>
                     </form>

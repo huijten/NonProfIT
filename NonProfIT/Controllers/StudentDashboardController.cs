@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace NonProfIT.Controllers
 {
-    public class EmployeeDashboard : Controller
+    public class StudentDashboardController : Controller
     {
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Student")]
         public IActionResult Index()
         {
             return View();
