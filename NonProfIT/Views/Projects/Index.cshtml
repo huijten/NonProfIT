@@ -23,16 +23,21 @@
                 <p class="card-text">Klik op meer info voor de omschrijving.</p>
                 @if (item.Available)
                 {
-                    <form asp-action="SignUp">
-                        <input type="hidden" name="@item.ProjectId"/>
-                        <input type="submit" value="Aanmelden" class="btn btn-sm btn-dark" />
-                        <a href="#" class="btn btn-sm btn-outline-dark">Meer info</a>
-                    </form>
+                    @if (User.IsInRole("Student"))
+                    {
+                        <form asp-action="SignUp">
+                            <input type="hidden" value="@item.ProjectId" name="ProjectId" />
+                            <input type="submit" value="Aanmelden" class="btn btn-sm btn-dark" />
+                            <input type="submit" asp-action="Details" asp-route-id="@item.ProjectId" value="Meer info" class="btn btn-sm btn-dark" />
+                        </form>
+                    }
                 }
                 else
                 {
-                    <h6 class="card-subtitle text-muted">Uitgevoerd door:</h6>
-                    <h6 class="fw-bold">@item.Student.FirstName @item.Student.LastName</h6>
+                    <form asp-action="Details">
+                    <input type="submit" asp-action="Details" asp-route-id="@item.ProjectId" value="Meer info" class="btn btn-sm btn-dark" />
+                    </form>
+
                 }
             </div>
         </div>

@@ -62,12 +62,14 @@ namespace NonProfIT.Controllers
         [Authorize(Roles = "Student")]
         public async Task<IActionResult> SignUp([Bind("ProjectId")] int ProjectId)
         {
+           
             Project project = await _context.Project.FindAsync(ProjectId);
+            project.Available = false;
             ApplicationUser student = await GetCurrentUserAsync();
             project.Student = student;
             project.StudentId = student.Id;
 
-            _context.Add(project);
+            _context.Update(project);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

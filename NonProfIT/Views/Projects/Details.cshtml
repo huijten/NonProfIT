@@ -29,24 +29,56 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Compensation)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Creator)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Creator.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Student)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Student.Id)
-        </dd>
-        <dt class = "col-sm-2">
+                <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Available)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Available)
         </dd>
+        <hr/>
+        <h1>Creator</h1>
+        <dt class = "col-sm-2">
+            E-mail
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Creator.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            Voornaam
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Creator.FirstName)
+        </dd>
+                <dt class = "col-sm-2">
+            E-mail
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Creator.LastName)
+        </dd>
+
+
+        <h1>Student</h1>
+
+        <dt class = "col-sm-2">
+            Voornaam
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Student.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            Achternaam
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Student.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            E-mail
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Student.Email)
+        </dd>
+
+
     </dl>
 </div>
 <div>
