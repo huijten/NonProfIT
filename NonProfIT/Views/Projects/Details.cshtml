@@ -2,86 +2,70 @@
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (User.IsInRole("Student"))
+    {
+        Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    }
+    else if (User.IsInRole("Employee"))
+    {
+        Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
+<link rel="stylesheet" href="~/NonProfIT.styles.css" asp-append-version="true" />
 
-<h1>Details</h1>
+<div class="container d-flex justify-content-center">
+    <div class="row p-1 gap-5">
 
-<div>
-    <h4>Project</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Compensation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Compensation)
-        </dd>
-                <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Available)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Available)
-        </dd>
-        <hr/>
-        <h1>Creator</h1>
-        <dt class = "col-sm-2">
-            E-mail
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Creator.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            Voornaam
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Creator.FirstName)
-        </dd>
-                <dt class = "col-sm-2">
-            E-mail
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Creator.LastName)
-        </dd>
+        <div class="card" style="width:500px">
+            <h2 class="d-flex justify-content-center">Project</h2>
 
+            <img class="d-flex card-img-top justify-content-center" src="~/lib/img/project.png" alt="Card image" style="width:75%">
+            <div class="card-body">
+                <h4 class="card-title">@Html.DisplayFor(model => model.Name)</h4>
+                <p class="card-text">@Html.DisplayFor(model => model.Description)</p>
+                @if (Model.Available)
+                {
+                    <span class="float-lg-end m-2 badge bg-success">Available</span>
+                }
+                else
+                {
+                    <span class="float-lg-end m-2 badge bg-danger">Unavailable</span>
+                }
 
-        <h1>Student</h1>
+            </div>
+        </div>
 
-        <dt class = "col-sm-2">
-            Voornaam
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Student.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            Achternaam
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Student.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            E-mail
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Student.Email)
-        </dd>
+        <div class="col-1">
+            <div class="card" style="width:300px">
+                <h2 class="d-flex justify-content-center">Creator</h2>
+                <img class="card-img-top" src="~/lib/img/teacher.png" alt="Card image" style="width:50%">
+                <div class="card-body">
+                    <h4 class="card-title">@Html.DisplayFor(model => model.Creator.FirstName) @Html.DisplayFor(model => model.Creator.LastName)</h4>
+                    <p class="card-text">@Html.DisplayFor(model => model.Creator.Email)</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                </div>
+            </div>
 
+            <div class="card" style="width:300px">
+                <h2 class="d-flex justify-content-center">Student</h2>
+                <img class="card-img-top" src="~/lib/img/student.png" alt="Card image" style="width:50%">
+                <div class="card-body">
+                    <h4 class="card-title">@Html.DisplayFor(model => model.Student.FirstName) @Html.DisplayFor(model => model.Student.LastName)</h4>
+                    <p class="card-text">@Html.DisplayFor(model => model.Student.Email)</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                </div>
+            </div>
+        </div>
 
-    </dl>
+    </div>
 </div>
-<div>
+
+
+<div class="">
     <a asp-action="Edit" asp-route-id="@Model?.ProjectId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

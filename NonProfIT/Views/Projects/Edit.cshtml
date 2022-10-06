@@ -2,7 +2,18 @@
 
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (User.IsInRole("Student"))
+    {
+        Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    }
+    else if (User.IsInRole("Employee"))
+    {
+        Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
 
 <h1>Edit</h1>
